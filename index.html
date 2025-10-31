@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Krabascript programming language</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        /* This is where all the styling (CSS) goes! */
+
+        /* == 1. Your Color Scheme as CSS Variables == */
+        :root {
+            --c-lightest: #A0EAFF;
+            --c-light-sky: #90E4FC;
+            --c-sky: #70D7F3;
+            --c-sky-dark: #63CBE7;
+            --c-aero: #44B5D5; /* This is our main accent color */
+            
+            --c-white: #ffffff;
+            --c-text: #333;
+            --c-code-bg: #000000; /* From your code snippet image */
+        }
+
+        /* == 2. General Page Reset & Setup == */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--c-white);
+            color: var(--c-text);
+            line-height: 1.6;
+        }
+
+        /* == 3. MODERN Navigation Bar == */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            
+            /* MODERN: Sticky Glassmorphism Effect */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent */
+            backdrop-filter: blur(10px); /* The "frosty glass" effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            border-bottom: 1px solid var(--c-lightest); /* Thinner border */
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--c-aero);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px; /* Adjust size as needed */
+            height: 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--c-text);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--c-aero);
+        }
+
+        /* == 4. MODERN Hero Section == */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            padding: 4rem 5%;
+            min-height: 80vh;
+            
+            /* MODERN: Gradient Background */
+            background: linear-gradient(170deg, var(--c-lightest) 0%, #f5faff 60%);
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--c-text);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 span {
+            color: var(--c-aero); /* Use the accent color */
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 10px; /* MODERN: Softer corners */
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--c-aero);
+            color: var(--c-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--c-sky-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--c-white);
+            color: var(--c-aero);
+            border: 2px solid var(--c-aero);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--c-lightest);
+            transform: translateY(-2px);
+        }
+
+        /* == 5. MODERN Code Snippet == */
+        .hero-code {
+            background-color: var(--c-code-bg);
+            border-radius: 16px; /* MODERN: Softer corners */
+            padding: 2rem;
+            overflow-x: auto;
+            /* MODERN: Softer, deeper shadow */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .hero-code pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Syntax highlighting based on your image! */
+        .code-purple { color: #DE73FF; }
+        .code-red { color: #FF6E6E; }
+        .code-yellow { color: #F6F389; }
+        .code-blue { color: #71D8FF; }
+        .code-white { color: #FFFFFF; }
+        .code-pink { color: #FF80D4; }
+        .code-green { color: #87FCAE; }
+
+        /* == 6. MODERN Features Section == */
+        .features {
+            display: flex;
+            justify-content: center; /* Better for a gapped layout */
+            gap: 2rem; /* Add space between feature items */
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            text-align: center;
+            padding: 5rem 5%;
+        }
+
+        .feature-item {
+            max-width: 300px;
+            /* MODERN: Add padding and transition for hover */
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* MODERN: Interactive hover effect */
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(68, 181, 213, 0.15); /* Soft shadow using accent color */
+        }
+
+        .feature-item .icon {
+            font-size: 3rem; /* Slightly smaller icon */
+            color: var(--c-aero);
+            background-color: var(--c-lightest);
+            padding: 1.5rem; /* Bigger circle */
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--c-text);
+        }
+
+        .feature-item p {
+            color: #666;
+        }
+
+        /* == 7. Footer == */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--c-text);
+            color: var(--c-light-sky);
+            margin-top: 3rem;
+        }
+
+        /* == 8. MODERN Animations == */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Apply animations */
+        .hero-text {
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        .hero-code {
+            animation: fadeInUp 0.8s ease-out 0.2s; /* 0.2s delay */
+            animation-fill-mode: backwards; /* Starts in 'from' state */
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <span class="material-symbols-outlined">data_object</span>
+            The Krabascript programming language
+        </a>
+        <nav>
+            <ul>
+                <li><a href="https://github.com/khytryy/krabascript/tree/main/DOCUMENTATION" target="_blank" rel="noopener noreferrer">Docs</a></li>
+                <li><a href="#">Examples</a></li>
+                <li><a href="https://discord.gg/MQT4YgEYvn" target="_blank" rel="noopener noreferrer">Our Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Welcome to <span>Krabascript</span></h1>
+                <p class="subtitle">
+                    A <strong>statically typed</strong>, high-level, compiled language
+                    designed for <strong>performance</strong> and <strong>readability</strong>.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="https://github.com/khytryy/krabascript/tree/main/DOCUMENTATION" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Read the Docs</a>
+                </div>
+            </div>
+
+            <div class="hero-code">
+                <pre><code><span class="code-purple">@import</span> <span class="code-white">&lt;</span><span class="code-green">stdlib.ks</span><span class="code-white">&gt;;</span>
+
+<span class="code-red">function</span> <span class="code-yellow">main</span><span class="code-white">() -&gt;</span> <span class="code-blue">int</span> <span class="code-white">{</span>
+    <span class="code-pink">print</span><span class="code-white">(</span><span class="code-green">“Hello, World!”</span><span class="code-white">);</span>
+<span class="code-white">}</span></code></pre>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-item">
+                <span class="material-symbols-outlined icon">speed</span>
+                <h3>High Performance</h3>
+                <p>Krabascript optimizes your code on the max by default, so you can write readable code instead of performant code.</p>
+            </div>
+            <div class="feature-item">
+                <span class="material-symbols-outlined icon">rule</span>
+                <h3>Statically Typed</h3>
+                <p>Catch errors at compile-time, not runtime. Write more robust and maintainable code.</p>
+            </div>
+            <div class="feature-item">
+                <span class="material-symbols-outlined icon">auto_stories</span>
+                <h3>Readable Syntax</h3>
+                <p>A clean and intuitive syntax that's easy to learn for beginners and powerful for experts.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Krabascript.</p>
+    </footer>
+
+</body>
+</html>
