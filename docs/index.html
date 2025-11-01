@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Krabascript programming language</title>
+    <title>The Krabascript - Documentation</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
@@ -178,6 +178,19 @@
             line-height: 1.7;
         }
 
+        h1 {
+            margin-left: 50px;
+        }
+
+        .h1-title {
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        h2 {
+            margin-left: 50px;
+        }
+
         /* Syntax highlighting based on your image! */
         .code-purple { color: #DE73FF; }
         .code-red { color: #FF6E6E; }
@@ -261,6 +274,55 @@
             animation-fill-mode: backwards; /* Starts in 'from' state */
         }
 
+        .index {
+            
+            padding: 3rem 5%;
+            color: #fff;
+        }
+
+        .index hr {
+            border: none;
+            height: 6px;
+            background-color: #a0eaff; 
+            margin: 1.5rem 0;
+            border-radius: 2px;
+        }
+
+        .index h2 {
+            color: #63CBE7;
+            margin-bottom: 1.5rem;
+            transform: translateX(-50px);
+        }
+
+        .dir-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .dir-columns ul {
+            list-style: none;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            padding-left: 1.5rem;
+        }
+
+        .dir-columns li {
+            margin-bottom: 0.75rem;
+        }
+
+        .dir-columns a {
+            color: #63CBE7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .dir-columns a:hover {
+            color: #A0EAFF;
+            text-decoration: underline;
+        }
+
+
     </style>
 </head>
 <body>
@@ -279,53 +341,39 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Introducing <span>Krabascript</span></h1>
-                <p class="subtitle">
-                    A <strong>statically typed</strong>, high-level, compiled language
-                    designed for <strong>performance</strong> and <strong>readability</strong>.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                    <a href="/docs/index.html" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Read the Docs</a>
-                </div>
-            </div>
+    <h1 class="h1-title">Krabascript documentation</h1>
 
-            <div class="hero-code">
-                <pre><code><span class="code-purple">@import</span> <span class="code-white">&lt;</span><span class="code-green">stdlib.ks</span><span class="code-white">&gt;;</span>
-
-<span class="code-red">function</span> <span class="code-yellow">main</span><span class="code-white">() -&gt;</span> <span class="code-blue">int</span> <span class="code-white">{</span>
-    <span class="code-pink">print</span><span class="code-white">(</span><span class="code-green">“Hello, World!”</span><span class="code-white">);</span>
-<span class="code-white">}</span></code></pre>
-            </div>
-        </section>
-
-        <section class="features">
-            <div class="feature-item">
-                <span class="material-symbols-outlined icon">speed</span>
-                <h3>High Performance</h3>
-                <p>Krabascript automatically optimizes your code to the third-level by default, allowing you to focus on readability instead of manual performance tweaks.</p>
-            </div>
-            <div class="feature-item">
-                <span class="material-symbols-outlined icon">rule</span>
-                <h3>Statically Typed</h3>
-                <p>Catch type errors at compile time, not runtime. This enables the compiler to produce blazingly fast, highly optimized code.</p>
-            </div>
-            <div class="feature-item">
-                <span class="material-symbols-outlined icon">auto_stories</span>
-                <h3>Readable Syntax</h3>
-                <p>We focus on creating a clean, readable syntax that's simple to learn — even for beginners.</p>
-            </div>
-            <div class="feature-item">
-                <span class="material-symbols-outlined icon">bolt</span>
-                <h3>Feature-Rich</h3>
-                <p>Krabascript includes nearly every modern language feature you'd expect — but in a more simplified and elegant way.</p>
-            </div>
-        </section>
-
-    </main>
+    <section class="index">
+        <hr>
+        <h2>Krabascript</h2>
+        <div class="dir-columns">
+            <ul>
+                <li><a href="#">| Compiler flags</a></li>
+                <li><a href="#">| Syntax</a></li>
+                <li><a href="#">| Compiling for other architectures</a></li>
+                
+            </ul>
+        </div>
+        <hr>
+        <h2>Vanilla</h2>
+        <div class="dir-columns">
+            <ul>
+                <li><a href="#">| Introduction</a></li>
+                <li><a href="#">| Building a project with Vanilla</a></li>
+                
+            </ul>
+        </div>
+        <hr>
+        <h2>Libraries</h2>
+        <div class="dir-columns">
+            <ul>
+                <li><a href="#">| stdlib.ks</a></li>
+                <li><a href="#">| vector.ks</a></li>
+                <li><a href="#">| stdtype.ks</a></li>
+                
+            </ul>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 Krabascript Project. Made with <span class="material-symbols-outlined">favorite</span> by Yehor Khytryy & others</p>
